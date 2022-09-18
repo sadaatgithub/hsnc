@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemophilia Society Nagpur Chapter</title>
+    <link rel="icon" type="image/png" href="/static/imgs/logoHSNC.png"/>
+    {% load static %}
+    <!-- {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %} -->
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+</head>
+
+<body onload="loader()" class="">
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+        {% comment %} <img src="{% static 'imgs/__Iphone-spinner-1.gif' %}" alt=""> {% endcomment %}
+    </div>
+    <header class="container" id="top">
+        <div class="row">
+            <div class="col-sm-1 burger-menu p1 d-sm-block clr-primary" id="burger-menu">&#9776;</div>
+            <div class="logo col-4 col-sm-11">
+                <a href="/" class="p1">
+                    <img src="{% static 'imgs/hsnc05feb.svg' %}" alt="" class="w-100">
+                    
+                </a>
+            </div>
+            {% comment %} <div class="col-2 d-sm-none"></div> {% endcomment %}
+            <div class="contact-info col-6 col-sm-12 d-sm-none d-flex align-center gap-1">
+                <div class="contact-email"><i class="fa-regular fa-envelope-open"></i> &nbsp;<span
+                        title="Official Email">nagpur@hemophilia.in</span></div>
+                |
+                <div class="contact-mobile"><i class="fa-solid fa-phone-volume"></i> &nbsp;123456789</div>
+            </div>
+            <div class="donate-us col-2 col-sm-12 d-sm-none d-flex wrap">
+                <button class="btn donate self-center mr-1 c-white">Donate Us</button>
+            </div>
+            <!-- <div class="col-1 col-sm-12 d-grid">
+                <button class="toggle-theme m-auto"><i class="fas fa-sun" id="fa-sun"></i></button>
+            </div> -->
+        </div>
+    </header>
+
+
+<!-- ----------------- nav bar starts here ------------------------ -->
+
+    <nav class="container sticky-top">
+        <div class="row shadow">
+            <div class="nav col-12 d-flex bg-nav">
+                <div class="container nav-sm-relative bg-nav d-flex m-auto">
+                    <div class="nav-div  bg-nav m-auto" id="nav-div">
+
+                        <ul class="navmenu d-flex" id="navmenu">
+                            <li class="nav-li{% if home %} active {% else %}  {% endif %} "><a href="/">Home</a></li>
+                            <li class="{% if bd %} active {% else %}  {% endif %}"><a href="#">Bleeding
+                                    Disorders &nbsp;<i class="fas fa-caret-down"></i></a>
+                                <ul class="submenu  d-flex-col w-sm-100">
+                                    <li><a href="/hemophilia">Hemophilia</a></li>
+                                    <li><a href="/vWd">Von Willebrand Disease</a></li>
+                                    <li><a href="/inhibitors">Inhibitors</a></li>
+                                    <li><a href="/women-bleeders">Women With Bleeding Dissorder</a></li>
+                                    <li><a href="/treatments">Treatment</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/#news_events">News & Events</i></a></li>
+                            <li><a href="/#about_us">About Us</a></li>
+                            <li class="{% if status %}active  {% else %} {% endif %}"><a
+                                    href="/contact-us">Contact Us</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<!-- ----------------- nav bar ends here ----------------------------->
+
+
+<!-------------- Progress Bar ---------------------------------------->
+
+<div id="progress-bar" class="d-sm-none"></div> 
+
+<!-------------- Progress Bar ends here ------------------------------>
+
+<!-------------- Go to top Button ------------------------------------>
+
+<div id="go-to-top" class="shadow d-flex-center">
+    <a href="#top"><i class="fas fa-chevron-up"></i></a>
+</div>
+<!-------------- Go to top Button ends ---------------->
+
+
+<!----------------- main content goes here -------------------->
+           
+            <div class="container" id="progress-div">
+                {% block content %}
+                {% endblock content %}
+            </div>
+           
+
+<!----------------- main content ends here -------------------->
+
+
+<!-- footer starts here -->
+    <footer class="container-fluid">
+        <div class="container mt-4 bg-footer">
+            <div class="row">
+                <div class="col-12 footer-logo">
+                    <img src="{% static 'imgs/hsnc05feb.svg' %}" alt="" class="w-50 m-auto w-sm-100">
+                </div>
+            </div>
+     <div class="row mt-1">
+         <div class="col-12 mt-1">
+             <ul class="d-flex j-con-center gap-1 footer-nav">
+                 <li><a href="">About Us</a></li>
+                 <li><a href="">Contact Us</a></li>
+                 <li><a href="">Privacy Policy</a></li>
+             </ul>
+         </div>
+         <div class="col-12">
+            <ul class="d-flex j-con-center gap-1 footer-nav">
+               <p class="clr-light">Find Us</p>
+                <li><a href=""><i class="fab fa-instagram"></i> </a></li>
+                <li><a href=""><i class="fab fa-facebook"></i> </a></li>
+            </ul>
+         </div>
+     </div>
+        <div class="border-footer mt-1 d-flex">
+            <p class="copy p2 m-auto">&copy; Copyright at Hemophilia Society Nagpur Chapter</p>
+        </div>
+    </div>
+    </footer>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/script3.js' %}"></script>
+    {% block js %}
+    {% endblock js %}
+</body>
+
+</html>

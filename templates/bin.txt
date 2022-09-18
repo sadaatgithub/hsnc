@@ -1,0 +1,44 @@
+function setSlideToLeft(){
+    cardStory.forEach(function (slide,index) {
+        slide.style.left = `${index * 100}%`;
+    })
+}
+setSlideToLeft()
+let counter = 0;
+
+let timeperiod = 4000
+let autoslide = setInterval(carousel,timeperiod)
+
+function resetAutoSlide (){
+    clearInterval(autoslide)
+    autoslide = setInterval(carousel,timeperiod)
+}
+
+
+function cardSlide () {
+    cardStory.forEach(function (slide) {
+        slide.style.transform = `translateX(-${counter * 100}%)`;
+      });
+}
+
+nextBtn.addEventListener("click", function () {
+    counter++;
+    carousel();
+    resetAutoSlide()
+  
+  });
+  
+  prevBtn.addEventListener("click", function () {
+    counter--;
+    carousel();
+    resetAutoSlide()
+  
+  });
+
+  function carousel(){
+      counter++;
+      if(counter > slides.length - 1){
+          counter = 0
+      }
+      cardSlide()
+  }

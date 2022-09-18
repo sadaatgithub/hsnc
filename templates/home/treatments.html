@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+
+{% for data in query %}
+<div class="container p3">
+    <div class="row">
+        <div class="col-12">
+            <div class="current_url text-left">
+                <p class="clr-blue"><a href="/"class="clr-blue"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;<span>&nbsp;/&nbsp;</span> </a> Bleeding Dissorders <span>&nbsp;/&nbsp;</span>
+                    <a href="#"class="clr-blue"> {{data.title}}</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="text-left">
+                <h2 class="heading clr-dark mt-1">{{data.title}}</h2>
+
+            </div>
+        </div>
+        <div class="col-12 mt-2 text-muted l-height-2">
+            <p class="text-left  p1 ">{{data.content|safe}}</p>
+
+        </div>
+        <div class="col-4 col-sm-12">
+            <div class="mt-2">
+                {% if data.image_1 %}
+                <div class="">
+                    <img src="/media/{{data.image_1}}" class="card_img" loading="lazy">
+                </div>
+                {% endif %}
+               
+            </div>
+        </div>
+        {% if data.title %}
+        <div class="col-12">
+            <div class="mt-2 text-left">
+                <h2 class="heading ml-1">{{data.title_2}}</h2>
+            </div>
+        </div>
+        {% endif %}
+       
+    </div>
+    <!-- <div class="col-12 mt-4">
+        <h3>Related Article</h3>
+    </div>
+    <div class="col-12">
+        <div class="underline-dark"></div>
+    </div> -->
+</div>
+{% comment %} </div> {% endcomment %}
+{% endfor %}
+<div class="row">
+    <div class="col-12 text-left p3">
+        <strong class="">Disclaimer:</strong><p class="text-muted mt-1"> This website is for information purposes only and provides an overview of 
+            the subject matter covered. It is not a substitute for professional medical advice, diagnosis or treatment.
+             Always consult your haemophilia centre for specific advice on your healthcare concerns. The information on this website is subject to change without notice. </p>
+    </div>
+</div>
+
+{% if qs %}
+<div class="container mt-4 p1">
+    <div class="row grid-gap1">
+        <div class="col-12 mb-2">
+            {% if query %}
+                 <h3>Related Articles</h3>
+            {% else %}
+                <h3>Treatments</h3>
+            {% endif %}
+            <div class="underline-dark m-auto"></div>
+            </div>
+    {% for data in qs %}
+        <div class="col-4 col-sm-12 d-flex-center-col shadow">
+
+            <div class="card_more d-flex-col-center">
+                <div class="card-img">
+                    {% if data.image_1 %}
+                    <img src="/media/{{data.image_1}}" class="card_img">
+            
+                    {% else %}
+                    <img src="{% static 'imgs/logoHSNC.png'%}" class="card_img">
+                    {% endif %}
+                </div>
+                <div class="card-text p2">
+                    <h4>{{data.title}}</h4>
+                    <p class="text-left subheading mt-1">{{data.content|truncatechars_html:100|safe}}</p>
+                    <button class="btn btn-red mt-1 c-white flex-end"><a href="{% url 'home:treatments_slug' data.slug data.category %}">Read More</a></button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endblock content %}
+
+
+<script src="{% static 'js/script.js' %}"></script>

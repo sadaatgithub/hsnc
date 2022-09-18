@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% for data in query %}
+{% comment %} <div class="container  p1"> {% endcomment %}
+    <div class="row">
+        <div class="col-12">
+            <div class="current_url text-left">
+                <p class="clr-blue ml-2 sm-m-auto"><a href="/"class="clr-blue">Home <span>/</span> </a> Bleeding Dissorders <span>/</span>
+                    <a href="#"class="clr-blue"> {{data.title}}</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-12 p3 bg-grey bg-property"  style="background-image:url('/media/{{data.image_1}}');">
+            {% comment %} {% static 'imgs/hemophila.jpg' %} {% endcomment %}
+            <div class="text-left flyer">
+                <h1 class="heading c-white spacing-1">{{data.title}}</h1>
+
+            </div>
+            {% comment %} <div class="underline"></div> {% endcomment %}
+
+        </div>
+      {% comment %} <div class="col-12 col-sm-12 mt-2 scroll-element fade-in-bottom">
+            <div class="m-auto w-50 w-sm-100 ">
+                {% if data.image_1 %}
+                <div class="">
+                    <img src="/media/{{data.image_1}}" class="card_img" loading="lazy">
+                </div>
+                {% endif %}
+               
+            </div>
+        </div> {% endcomment %}
+        <div class="col-12 col-sm-12 mt-2 p3">
+            <div class="text-muted l-height-2 font-serif">
+                {{data.content|safe}}</div>
+        </div>
+       
+    
+    </div>
+{% comment %} </div> {% endcomment %}
+{% endfor %}
+{% endblock content %}

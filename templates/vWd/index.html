@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+
+{% for data in query %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="current_url text-left">
+                <p class="clr-blue p1 ml-1"><a href="/"class="clr-blue"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;<span>&nbsp;/&nbsp;</span> </a> Bleeding Dissorders <span>&nbsp;/&nbsp;</span>
+                    <a href="#"class="clr-blue"> {{data.title}}</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-12 p3">
+            <div class="text-left">
+                <h1 class="heading clr-dark mt-1">{{data.title}}</h1>
+
+            </div>
+            <div class="underline bg-primary"></div>
+
+        </div>
+        <div class="col-12 col-sm-12 mt-2">
+            <div class="m-auto w-25 w-sm-100">
+                {% if data.image_1 %}
+                <div class="">
+                    <img src="/media/{{data.image_1}}" class="card_img" loading="lazy">
+                </div>
+                {% endif %}
+               
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 mt-1 p3">
+
+             <div class="text-muted l-height-2 font-serif">
+         {{data.content|safe}}</div>
+
+        </div>
+        
+    
+    </div>
+</div>
+{% comment %} </div> {% endcomment %}
+{% endfor %}
+
+
+<hr>
+{% if qs %}
+<div class="container mt-4 p1">
+    <div class="row grid-gap1">
+        <div class="col-12 mb-2">
+            <h2 class="clr-dark mb-1">Related Articles</h2>
+            <div class="underline-dark m-auto"></div>
+
+        </div>
+    
+        {% for data in qs %}
+        <div class="col-4 col-sm-12 d-flex-center-col shadow">
+
+            <div class="card_more d-flex-col-center">
+                <div class="card-img">
+                    {% if data.image_1 %}
+                    <img src="/media/{{data.image_1}}" class="card_img">
+            
+                    {% else %}
+                    <img src="{% static 'imgs/logoHSNC.png'%}" class="card_img">
+                    {% comment %} <img src="{{ data.image.url }}" class="card_img"> {% endcomment %}
+                    {% endif %}
+                </div>
+                <div class="card-text p2 d-flex-center-col">
+                    <h4>{{data.title}}</h4>
+                    <p class="text-left subheading mt-1">{{data.content|truncatechars_html:150|safe}}</p>
+                    <button class="btn btn-red mt-2 c-white"><a href="{% url 'hemophilia:about' data.slug data.category %}">Read More</a></button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+{% endif %}
+{% endblock content %}
+
+
+<script src="{% static 'js/script.js' %}"></script>

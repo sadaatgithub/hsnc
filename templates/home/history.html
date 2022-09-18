@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container_1 %}
+<h4><a href="/">Home</a>/Bleeding Dissorders/<a href="#">{{data.title_1}}</a></h4>
+
+{% for data in  query %}
+<div class="con_1_row_1">
+    <h3 class="heading">{{data.title_1}}</h3>
+    <p>{{data.para_1}}</p>
+    <h4 class="heading">{{data.title_2}}</h4>
+    <p>{{data.para_2}}</p>
+    <h4 class="heading">{{data.title_3}}</h4>
+    <p>{{data.para_3}}</p>
+    </div>
+
+{% endfor %}
+
+{% endblock container_1 %}
+<script src="{% static 'js/script.js' %}"></script>

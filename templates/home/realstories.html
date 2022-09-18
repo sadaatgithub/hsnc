@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+{% for data in qs  %}
+<div class="container p1">
+
+
+<div class="row">
+<div class="col-8 col-sm-12 p1 ht-100 mt-2 text-left">
+<h2> {{data.heading}}</h2>
+<p class="subheading"> {{data.description}}</p>
+</div>
+<div class="col-4 col-sm-12 mt-2">
+<img src="/media/{{data.image}}" class="card_img" loading="lazy">
+
+</div>
+</div>
+
+{% endfor %}
+</div>
+
+
+{% endblock content %}

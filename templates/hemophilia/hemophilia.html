@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+
+{% for data in query %}
+{% comment %} <div class="container  p1"> {% endcomment %}
+    <div class="row">
+        <div class="col-12">
+            <div class="current_url text-left">
+                <p class="clr-blue ml-2 sm-m-auto"><a href="/"class="clr-blue">Home <span>/</span> </a> Bleeding Dissorders <span>/</span>
+                    <a href="#"class="clr-blue"> {{data.title}}</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-12 p3 bg-grey bg-property"  style="background-image:url('/media/{{data.image_1}}');">
+            {% comment %} {% static 'imgs/hemophila.jpg' %} {% endcomment %}
+            <div class="text-left flyer">
+                <h1 class="heading h3 c-white spacing-1">{{data.title}}</h1>
+
+            </div>
+            {% comment %} <div class="underline"></div> {% endcomment %}
+
+        </div>
+      {% comment %} <div class="col-12 col-sm-12 mt-2 scroll-element fade-in-bottom">
+            <div class="m-auto w-50 w-sm-100 ">
+                {% if data.image_1 %}
+                <div class="">
+                    <img src="/media/{{data.image_1}}" class="card_img" loading="lazy">
+                </div>
+                {% endif %}
+               
+            </div>
+        </div> {% endcomment %}
+        <div class="col-12 col-sm-12 mt-2 p3">
+            <div class="text-muted l-height-2 text-size-sm  font-serif">
+                {{data.content|safe}}</div>
+        </div>
+       
+    
+    </div>
+{% comment %} </div> {% endcomment %}
+{% endfor %}
+<div class="row mt-1">
+    <div class="col-12 text-left p3">
+        <strong class="">Disclaimer : -</strong><p class="text-muted mt-1"> This website is for information purposes only and provides an overview of 
+            the subject matter covered. It is not a substitute for professional medical advice, diagnosis or treatment.
+             Always consult your haemophilia centre for specific advice on your healthcare concerns. The information on this website is subject to change without notice. </p>
+    </div>
+</div>
+
+{% if qs %}
+{% comment %} <div class="container mt-4 p1"> {% endcomment %}
+    <div class="row mt-3 grid-gap1">
+        <div class="col-12 mb-2">
+            <h2 class="clr-dark">Related Articles</h2>
+            <br>
+            <div class="underline bg-primary m-auto"></div>
+
+        </div>
+        </div>
+    <div class="card-grid mt-3 grid-gap1">
+    
+        {% for data in qs %}
+        {% comment %} <div class="col-4 col-sm-12 d-flex-center-col scroll-element fade-in-bottom shadow"> {% endcomment %}
+        <div class="d-flex-center-col scroll-element fade-in-bottom shadow animate">
+            <div class="card_more d-flex-col-center">
+                <div class="card-img skeleton">
+                    {% if data.image_1 %}
+                    <img src="/media/{{data.image_1}}" class="card_img">
+            
+                    {% else %}
+                    {% comment %} <img src="{% static 'imgs/logoHSNC.png'%}" class="card_img"> {% endcomment %}
+                    <img src="{{ data.image.url }}" class="card_img">
+                    {% endif %}
+                </div>
+                <div class="card-text p2 d-flex-center-col">
+                    <h4 class="skeleton h5 clr-primary">{{data.title}}</h4>
+                    <h6 class="text-left subheading mt-1">{{data.content|truncatechars_html:100|safe}}</h6>
+                    <button class="btn btn-red mt-2 c-white skeleton"><a href="{% url 'hemophilia:about' data.slug data.category %}" class="">Read More</a></button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+{% comment %} </div> {% endcomment %}
+{% endif %}
+{% endblock content %}
+
+
+<script src="{% static 'js/script.js' %}"></script>

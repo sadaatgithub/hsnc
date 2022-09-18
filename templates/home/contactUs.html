@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="container mt-3">
+  {% comment %}
+  <div class="message-icon">
+    <i class="far fa-comment-alt"></i>
+  </div>
+  {% endcomment %}
+  <div class="row">
+
+    <div class="col-12 min-ht-90">
+        <div class="contact-us d-flex-center-col">
+            <h2>Contact Us</h2>
+            <div class="underline bg-primary mt-1"></div>
+         </div>
+    </div>
+
+
+    <div class="col-7 col-sm-12 min-ht-90 d-flex j-con-center">
+        <form
+          action="/contact-us"
+          class="contact-form mt-3 shadow"
+          method="POST"
+        >
+          {% csrf_token %}
+
+          <div class="form-section">
+            <label for="name">Name</label>
+            <input type="text" name="name" required placeholder="Full Name" />
+          </div>
+
+          <div class="form-section">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Enter Your Email Id"
+            />
+          </div>
+
+          <div class="form-section">
+            <label for="contact-no">Contact No</label>
+            <input
+              type="tel"
+              name="contact_no"
+              required
+              placeholder="Enter Your Mobile No"
+            />
+          </div>
+
+          <textarea
+            placeholder="Enter Your Message Here"
+            name="content"
+            id="content"
+            cols="30"
+            rows="7"
+          ></textarea>
+          <button type="submit" class="btn m-auto">Submit</button>
+        </form>
+      </div>
+    <div class="col-5 col-sm-12">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.1676925597835!2d79.07799351915718!3d21.145723735865886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0ecb66dd101%3A0xa41f3eac3096a4f9!2sYMCA%20Complex%2C%20NH%206%2C%20Civil%20Lines%2C%20Nagpur%2C%20Maharashtra%20440001!5e0!3m2!1sen!2sin!4v1647515090227!5m2!1sen!2sin"
+         width="600"
+        height="450" 
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        class="mt-3 g-map"
+      ></iframe>
+    </div>
+  </div>
+</div>
+{% endblock content %}
